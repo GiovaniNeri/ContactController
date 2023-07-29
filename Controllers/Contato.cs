@@ -20,9 +20,10 @@ namespace ContactController.Controllers
         {
             return View();
         }
-        public IActionResult Editar()
+        public IActionResult Editar(int id)
         {
-            return View();
+            Contact contato = _contatoRepositorio.ListarPorID(id);
+            return View(contato);
         }
         public IActionResult ApagarConfirmacao()
         {
