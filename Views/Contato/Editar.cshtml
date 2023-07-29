@@ -12,22 +12,21 @@
 </div>
 
 <form asp-controller="Contato" asp-action="Alterar" method="post">
-    <div class="mb-3">
+
+    <input type="hidden" asp-for="Id"/>
+    <div class="form-group">
         <label for="nome" class="form-label">Nome</label>
-        <input asp-for="Name" type="text" class="form-control" placeholder="Digite o nome de contato">
+        <input type="text" asp-for="Name" class="form-control" placeholder="Digite o nome do contato" />
     </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">E-Mail</label>
-        <input asp-for="Email" type="email" class="form-control" placeholder="Digite o e-mail de contato">
+    <div class="form-group">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" asp-for="Email" class="form-control" placeholder="Digite o e-mail do contato" />
     </div>
-    <div class="mb-3">
+    <div class="form-group">
         <label for="contato" class="form-label">Contato</label>
-        <input asp-for="Contato" type="text" class="form-control" placeholder="Digite o seu contato">
+        <input type="text" asp-for="Contato" class="form-control" placeholder="Digite o numero do contato" />
     </div>
 
-    <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary btn-block">Alterar</button>
-        <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
-    </div>
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a class="btn btn-secondary" asp-action="Index" asp-controller="Contato" role="button">Voltar</a>
 </form>
-

@@ -36,5 +36,10 @@ namespace ContactController.Controllers
             _contatoRepositorio.Adicionar(contact);
             return RedirectToAction("Index");
         }
+        public IActionResult Atualizar(Contact contact)
+        {
+            _contatoRepositorio.Atualizar(contact);
+            return RedirectToAction("Index");
+        }
     }
 }
