@@ -1,4 +1,6 @@
-﻿@{
+﻿@using ContactController.DBContext;
+@model Contact
+@{
     ViewData["Title"] = "Editar Contato";
 }
 
@@ -9,22 +11,22 @@
 
 </div>
 
-<form>
+<form asp-controller="Contato" asp-action="Criar" method="post">
     <div class="mb-3">
         <label for="nome" class="form-label">Nome</label>
-        <input type="text" class="form-control" placeholder="Digite o nome de contato">
+        <input asp-for="Name" type="text" class="form-control" placeholder="Digite o nome de contato">
     </div>
     <div class="mb-3">
         <label for="email" class="form-label">E-Mail</label>
-        <input type="email" class="form-control" placeholder="Digite o e-mail de contato">
+        <input asp-for="Email" type="email" class="form-control" placeholder="Digite o e-mail de contato">
     </div>
     <div class="mb-3">
         <label for="contato" class="form-label">Contato</label>
-        <input type="text" class="form-control" placeholder="Digite o seu contato">
+        <input asp-for="Contato" type="text" class="form-control" placeholder="Digite o seu contato">
     </div>
 
     <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary btn-block">Alterar</button>
+        <button type="submit" class="btn btn-primary btn-block">Adicionar</button>
         <a class="btn btn-secondary btn-block" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
     </div>
 </form>

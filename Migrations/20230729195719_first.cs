@@ -5,7 +5,7 @@
 namespace ContactController.Migrations
 {
     /// <inheritdoc />
-    public partial class ContactDbFirstCreate : Migration
+    public partial class first : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
