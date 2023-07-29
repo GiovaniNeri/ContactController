@@ -1,3 +1,7 @@
+using ContactController.DBContext;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+
 namespace ContactController
 {
     public class Program
@@ -8,6 +12,9 @@ namespace ContactController
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var provider = builder.Services.BuildServiceProvider();
+            var configuration =provider.GetRequiredService<IConfiguration>();
+            builder.Services.AddDbContext<ContactContext>(item => item.UseSqlServer(configuration.GetConnectionString("Database")));
 
             var app = builder.Build();
 
