@@ -1,4 +1,5 @@
 using ContactController.DBContext;
+using ContactController.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -11,12 +12,14 @@ namespace ContactController
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             builder.Services.AddControllersWithViews();
             var provider = builder.Services.BuildServiceProvider();
             var configuration =provider.GetRequiredService<IConfiguration>();
             builder.Services.AddDbContext<ContactContext>(item => item.UseSqlServer(configuration.GetConnectionString("Database")));
-
             var app = builder.Build();
+
+            
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -34,6 +37,8 @@ namespace ContactController
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
+            
         }
     }
 }

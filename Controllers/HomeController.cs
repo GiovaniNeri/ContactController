@@ -1,4 +1,5 @@
-﻿using ContactController.Models;
+﻿using ContactController.DBContext;
+using ContactController.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -9,6 +10,7 @@ namespace ContactController.Controllers
 
         public IActionResult Index()
         {
+            Contact contact = new Contact();
             return View();
         }
 
