@@ -22,12 +22,20 @@ namespace ContactController.Controllers
         }
         public IActionResult Editar(int id)
         {
-            Contact contato = _contatoRepositorio.ListarPorID(id);
+            Contact contato = _contatoRepositorio.ListarPorID(id, _contatoRepositorio.Get_contactContext());
             return View(contato);
         }
-        public IActionResult ApagarConfirmacao()
+
+        public IActionResult Apagar(int id)
         {
-            return View();
+            _contatoRepositorio.Apagar(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ApagarConfirmacao(int id)
+        {
+            Contact contato = _contatoRepositorio.ListarPorID(id, _contatoRepositorio.Get_contactContext());
+            return View(contato);
         }
 
         [HttpPost]

@@ -13,7 +13,13 @@ namespace ContactController.Repositorio
         {
             return _contactContext.Contacts.ToList();
         }
-        public Contact ListarPorID(int id)
+
+        public ContactContext Get_contactContext()
+        {
+            return _contactContext;
+        }
+
+        public Contact ListarPorID(int id, ContactContext _contactContext)
         {
             return _contactContext.Contacts.FirstOrDefault(x => x.Id == id);
         }
@@ -26,7 +32,7 @@ namespace ContactController.Repositorio
 
         public Contact Atualizar(Contact contact)
         {
-            Contact contatoDB = ListarPorID(contact.Id);
+            Contact contatoDB = ListarPorID(contact.Id, Get_contactContext());
             if (contatoDB == null) throw new System.Exception("Houve um erro ao atualizar o contato");
 
             contatoDB.Name = contact.Name;
@@ -36,6 +42,20 @@ namespace ContactController.Repositorio
             _contactContext.Contacts.Update(contatoDB);
             _contactContext.SaveChanges(true);
             return contatoDB;
+        }
+
+        public bool Apagar(int id)
+        {
+            Contact contatoDB = ListarPorID(id);
+            if (contatoDB == null) throw new System.Exception("Houve um erro ao remover o contato");
+            _contactContext.Contacts.Remove(contatoDB);
+            _contactContext.SaveChanges();
+            return true;
+        }
+
+        public Contact ListarPorID(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

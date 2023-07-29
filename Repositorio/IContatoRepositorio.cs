@@ -7,6 +7,8 @@ namespace ContactController.Repositorio
         List<Contact> BuscarTodos();
         Contact ListarPorID(int id);
         Contact Adicionar(Contact contact);
-        Contact Atualizar(Contact contact)
+        Contact Atualizar(Contact contact);
+
+        bool Apagar(int id);
     }
 }
